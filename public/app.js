@@ -65,14 +65,18 @@ const handleSelectChange = function() {
   ul.appendChild(liName);
   ul.appendChild(liPopulation);
   ul.appendChild(liCapital);
-  const coords = savedCountry.latlng;
+  const coords = {
+    lat: savedCountry.latlng[0],
+    lng: savedCountry.latlng[1]
+  }
+  console.log(coords);
   createMap(coords);
 }
 
 // map things
-const createMap = function() {
+const createMap = function(coords) {
   const container = document.querySelector('#map');
-  const countryMap = new MapWrapper(container, coords, 18);
+  const countryMap = new MapWrapper(container, coords, 10);
   countryMap.addMarker(coords);
 }
 
